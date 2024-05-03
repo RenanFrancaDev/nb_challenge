@@ -7,8 +7,11 @@ export class ProductService {
   static getProducts() {
     return axios.get(`${BASE_URL}/${PATH}`);
   }
-  static getProductsByCategories() {
+  static getCategories() {
     return axios.get(`${BASE_URL}/${PATH}/categories/`);
+  }
+  static getProductByCategory(category: string) {
+    return axios.get(`${BASE_URL}/${PATH}/category/${category}`);
   }
   static getProduct(id: number) {
     return axios.get(`${BASE_URL}/${PATH}/${id}`);

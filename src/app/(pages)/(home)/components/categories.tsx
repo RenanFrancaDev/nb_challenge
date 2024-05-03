@@ -2,8 +2,7 @@ import { ProductService } from "@/app/api/products";
 import axios from "axios";
 
 const Categories = async () => {
-  const { data }: { data: String[] } =
-    await ProductService.getProductsByCategories();
+  const { data }: { data: String[] } = await ProductService.getCategories();
 
   return (
     <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 px-5">
