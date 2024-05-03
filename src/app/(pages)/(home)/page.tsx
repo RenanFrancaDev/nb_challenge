@@ -3,13 +3,12 @@ import PromoBanner from "./components/promo-banner";
 import Categories from "./components/categories";
 import axios from "axios";
 import { IProducts } from "@/app/interfaces/product";
+import ProductItem from "@/app/components/ProductItem";
 
 const Home = async () => {
   const { data }: { data: IProducts[] } = await axios.get(
     "https://fakestoreapi.com/products",
   );
-
-  console.log(data);
 
   return (
     <section>
@@ -18,9 +17,11 @@ const Home = async () => {
         alt="around 10% of discount"
       />
       <Categories />
-      {data.map((item, index) => (
-        <div key={index}>{item.title}</div>
-      ))}
+      <div className="flex flex-row gap-4 pb-6 pt-6">
+        {data.map((item, index) => (
+          <ProductItem key={item.id} product={item} />
+        ))}
+      </div>
     </section>
   );
 };
