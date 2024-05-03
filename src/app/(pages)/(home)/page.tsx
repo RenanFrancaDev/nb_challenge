@@ -11,13 +11,13 @@ const Home = async () => {
   );
 
   return (
-    <section>
+    <section className="my-5 flex h-auto flex-col justify-center px-5">
       <PromoBanner
         src="/banner_home/banner_home01.svg"
         alt="around 10% of discount"
       />
       <Categories />
-      <div className="flex flex-row gap-4 pb-6 pt-6">
+      <div className="flex flex-wrap  gap-5 p-6">
         {data.map((item, index) => (
           <ProductItem key={item.id} product={item} />
         ))}
