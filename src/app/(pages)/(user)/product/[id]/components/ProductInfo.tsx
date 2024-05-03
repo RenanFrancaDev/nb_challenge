@@ -52,11 +52,13 @@ const ProductInfo = ({ product }: { product: IProducts }) => {
 
       <div className="mt-8 flex flex-col gap-3">
         <h3 className="font-bold">Descrição</h3>
-        <p className="text-justify text-sm opacity-60">{product.description}</p>
+        <p className="text-justify text-sm opacity-60 first-letter:uppercase">
+          {product.description}
+        </p>
       </div>
 
       <Button
-        className="mt-8 font-bold uppercase"
+        className="my-8 font-bold uppercase"
         variant="contained"
         // onClick={handleAddToCartClick}
       >
