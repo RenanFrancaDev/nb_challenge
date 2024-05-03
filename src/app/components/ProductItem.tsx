@@ -28,7 +28,7 @@ const ProductItem = ({ product }: { product: IProducts }) => {
           </p>
 
           <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold">
-            R$ {Number(product.price).toFixed(2)}
+            R$ {Number(product.price).toFixed(2).replace(".", ",")}
           </p>
         </div>
       </div>
