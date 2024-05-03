@@ -2,15 +2,15 @@
 
 import { IProducts } from "@/app/interfaces/product";
 import { Button } from "@mui/material";
-// import { CartContext } from "@/providers/cart";
 import { useContext, useState } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { CartContext } from "@/app/providers/cart";
 
 const ProductInfo = ({ product }: { product: IProducts }) => {
   const [quantity, setQuantity] = useState(1);
-  // const { addProductToCart } = useContext(CartContext);
+  const { addProductToCart } = useContext(CartContext);
 
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -20,9 +20,9 @@ const ProductInfo = ({ product }: { product: IProducts }) => {
     setQuantity((prev) => prev + 1);
   };
 
-  //   const handleAddToCartClick = () => {
-  //     addProductToCart({ ...product, quantity });
-  //   };
+  const handleAddToCartClick = () => {
+    addProductToCart({ ...product, quantity });
+  };
   return (
     <div className="flex flex-col px-5">
       <h2 className="text-lg">{product.title}</h2>
@@ -60,7 +60,7 @@ const ProductInfo = ({ product }: { product: IProducts }) => {
       <Button
         className="my-8 font-bold uppercase"
         variant="contained"
-        // onClick={handleAddToCartClick}
+        onClick={handleAddToCartClick}
       >
         Adicionar ao carrinho
       </Button>
