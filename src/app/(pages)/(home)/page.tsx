@@ -4,11 +4,10 @@ import Categories from "./components/categories";
 import axios from "axios";
 import { IProducts } from "@/app/interfaces/product";
 import ProductItem from "@/app/components/ProductItem";
+import { ProductService } from "@/app/api/products";
 
 const Home = async () => {
-  const { data }: { data: IProducts[] } = await axios.get(
-    "https://fakestoreapi.com/products",
-  );
+  const { data }: { data: IProducts[] } = await ProductService.getProducts();
 
   return (
     <section className="my-5 flex h-auto flex-col justify-center px-5">
