@@ -5,14 +5,9 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 
 const ProductItem = ({ product }: { product: IProducts }) => {
-  const computeRating = (rating: number) => {
-    const widthrate = (rating * 110) / 5;
-    return widthrate;
-  };
-
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="flex h-[320px] w-[160px] flex-col gap-2 rounded-md border hover:cursor-pointer">
+      <div className="flex h-[320px] w-[200px] flex-col gap-2 rounded-md border hover:cursor-pointer">
         <div className="flex h-[180px] w-full items-center justify-center bg-white">
           <Image
             src={product.image}
