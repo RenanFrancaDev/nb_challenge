@@ -15,7 +15,7 @@ const ProductDetailPage = async ({
   const product = (await ProductService.getProduct(id)).data;
 
   return (
-    <section className="flex w-full flex-col items-center justify-center">
+    <section className="flex w-full flex-col items-center justify-center py-4">
       <div className="mx-auto flex min-w-[360px] max-w-[760px] flex-col gap-4">
         <div className="bg-accent flex h-[380px] w-full items-center justify-center">
           <Image

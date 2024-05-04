@@ -4,6 +4,7 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import { CartContext, ICartProduct } from "@/app/providers/cart";
 import { useContext } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Link from "next/link";
 
 const CartItem = ({ product }: { product: ICartProduct }) => {
   const { decreaseProductToCart, increaseProductToCart, deleteProductToCart } =
@@ -25,38 +26,48 @@ const CartItem = ({ product }: { product: ICartProduct }) => {
       <div className="flex items-center gap-4">
         {/* PARTE DIREITA (FOTO E NOME) */}
 
-        <div className="flex h-[100px] w-[77px] items-center justify-center rounded-lg bg-foreground">
-          <Image
-            src={product.image}
-            width={0}
-            height={0}
-            sizes="100vw"
-            alt={product.title}
-            className="h-auto w-32 "
-            style={{
-              objectFit: "contain",
-            }}
-          />
+        <div className="flex h-[100px] w-[77px] items-center justify-center rounded-lg bg-foreground hover:cursor-pointer">
+          <Link href={`/product/${product.id}`}>
+            <Image
+              src={product.image}
+              width={0}
+              height={0}
+              sizes="100vw"
+              alt={product.title}
+              className="h-auto w-32 "
+              style={{
+                objectFit: "contain",
+              }}
+            />
+          </Link>
         </div>
 
         <div className="flex flex-col">
           <p className="text-xs">{product.title}</p>
 
           <div className="flex items-center gap-2">
-            <p className="text-sm font-bold">R$ {product.price.toFixed(2)}</p>
+            <p className="text-sm font-bold">
+              R$ {product.price.toFixed(2).replace(".", ",")}
+            </p>
           </div>
 
           <div className="flex items-center gap-1">
-            <div onClick={handleDecreaseProductQuantityClick}>
+            <div
+              onClick={handleDecreaseProductQuantityClick}
+              className="hover:cursor-pointer"
+            >
               <ArrowCircleLeftIcon fontSize="medium" />
             </div>
 
             <span className="text-xs">{product.quantity}</span>
 
-            <div onClick={handleIncreaseProductQuantityClick}>
+            <div
+              onClick={handleIncreaseProductQuantityClick}
+              className="hover:cursor-pointer"
+            >
               <ArrowCircleRightIcon fontSize="medium" />
             </div>
-            <div className="">
+            <div className="pl-6 hover:cursor-pointer">
               <DeleteIcon
                 onClick={handleDeleteProductClick}
                 fontSize="medium"

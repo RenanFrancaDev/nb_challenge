@@ -34,7 +34,7 @@ const Cart = () => {
 
           <div className="flex items-center justify-between text-xs">
             <p>Subtotal</p>
-            <p>R$ {subtotal.toFixed(2)}</p>
+            <p>R$ {subtotal.toFixed(2).replace(".", ",")}</p>
           </div>
 
           <Divider />
@@ -46,7 +46,10 @@ const Cart = () => {
 
           <Divider />
 
-          <Button className="mt-7 font-bold uppercase" variant="contained">
+          <Button
+            className="mt-7 font-bold uppercase hover:cursor-pointer"
+            variant="contained"
+          >
             Finalizar compra
           </Button>
         </div>
