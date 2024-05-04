@@ -16,7 +16,7 @@ const Home = async () => {
         alt="around 10% of discount"
       />
       <Categories />
-      <div className="flex flex-wrap  gap-5 p-6">
+      <div className="grid grid-cols-1 gap-4 px-5 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((item, index) => (
           <ProductItem key={item.id} product={item} />
         ))}
