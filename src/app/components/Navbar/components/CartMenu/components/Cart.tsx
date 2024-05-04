@@ -1,19 +1,26 @@
-import { CartContext } from "@/app/providers/cart";
+import { CartContext, ICartContext } from "@/app/providers/cart";
 import { Button, Divider } from "@mui/material";
 import { useContext } from "react";
+import CartItem from "./CartItem";
+import { ShoppingCart } from "@mui/icons-material";
 
 const Cart = () => {
-  const { products, subtotal } = useContext(CartContext);
+  const { products, subtotal } = useContext<ICartContext>(CartContext);
 
   return (
-    <div className="flex h-full flex-col gap-4">
+    <div className="flex h-full flex-col gap-4 px-2 py-4">
       <div className="mt-4 flex h-full flex-col overflow-hidden">
-        <div className="flex h-full flex-col gap-4">
+        <div className="item flex h-full flex-col justify-center gap-4">
+          <div className=" mx-auto w-56 rounded-lg border-2 border-primary p-1 text-center">
+            <h2 className="text-xl font-bold">
+              <ShoppingCart fontSize="large" />
+              Meu carrinho
+            </h2>
+          </div>
+
           {products.length > 0 ? (
             products.map((product) => (
-              <div key={product.id}>{product.title}</div>
-
-              //   <CartItem key={product.id} product={product} />
+              <CartItem key={product.id} product={product} />
             ))
           ) : (
             <p>Você ainda não adicionou nenhum produto ao carrinho</p>
@@ -22,7 +29,7 @@ const Cart = () => {
       </div>
 
       {products.length > 0 && (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 px-5 font-bold">
           <Divider />
 
           <div className="flex items-center justify-between text-xs">

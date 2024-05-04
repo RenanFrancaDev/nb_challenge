@@ -41,13 +41,14 @@ export default function SwipeableTemporaryDrawer() {
     };
 
   const CartMenu = (anchor: Anchor) => (
-    <Box
-      sx={{ width: "260px" }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+    <Box sx={{ width: "100%" }} role="presentation">
       <List>
+        <p
+          onClick={toggleDrawer(anchor, false)}
+          className="absolute right-8 top-2 text-xl font-bold hover:cursor-pointer"
+        >
+          X
+        </p>
         <Cart />
       </List>
 
