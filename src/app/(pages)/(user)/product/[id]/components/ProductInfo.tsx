@@ -6,9 +6,9 @@ import { useContext, useState } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { CartContext } from "@/app/providers/cart";
+import { CartContext, ICartProduct } from "@/app/providers/cart";
 
-const ProductInfo = ({ product }: { product: IProducts }) => {
+const ProductInfo = ({ product }: { product: ICartProduct }) => {
   const [quantity, setQuantity] = useState(1);
   const { addProductToCart } = useContext(CartContext);
 

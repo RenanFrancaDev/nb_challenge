@@ -3,17 +3,17 @@
 import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import { IProducts } from "../interfaces/product";
 
-export interface CartProduct extends IProducts {
+export interface ICartProduct extends IProducts {
   quantity: number;
 }
 
-interface ICartContext {
-  products: CartProduct[];
+export interface ICartContext {
+  products: ICartProduct[];
   cartTotalPrice: number;
   cartPrice: number;
   subtotal: number;
   totalDiscount: number;
-  addProductToCart: (product: CartProduct) => void;
+  addProductToCart: (product: ICartProduct) => void;
   decreaseProductToCart: (productId: string) => void;
   increaseProductToCart: (productId: string) => void;
   deleteProductToCart: (productId: string) => void;
@@ -32,7 +32,7 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  const [products, setProducts] = useState<ICartProduct[]>([]);
 
   useEffect(() => {
     const item = JSON.parse(
@@ -61,7 +61,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const totalDiscount = subtotal;
 
-  const addProductToCart = (product: CartProduct) => {
+  const addProductToCart = (product: ICartProduct) => {
     // if product already contains in the cart
     const productIsAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
